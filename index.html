@@ -356,7 +356,7 @@
 </ul>
 </li>
 <li>球体的旋转<ul>
-<li>开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果<h4 id="球体的相关公式"><a href="#球体的相关公式" class="headerlink" title="球体的相关公式"></a>球体的相关公式</h4><h5 id="标签分布"><a href="#标签分布" class="headerlink" title="标签分布"></a>标签分布</h5><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png" alt="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png"><br>　　在 球体坐标系中， x y  z是通过三个值来确定，即以下三个公式<br><br>　　　　　　  x = r <em> sinθ </em> cosφ  y = r <em> sinθ </em> sinφz= r <em> cos θ  <br><br>　　因此我们可以通过对θ φ取随机值，从而把标签分布在球体的表面上，在标签分布的时候，不能随意分布，要均匀分布。引入以下两个公式：<br><br>　　　　　　θ = arccos((2 </em> i - 1)/ len - 1); φ = θ <em> sqrt(len </em> PI)<br><br>　　其中，（2 * i - 1）/len - 1 是-1 到 1 中均匀分布的数列， 然后用arccos值得到均匀分布的θ值，第二个式子是θ的等差数列<h5 id="球体旋转"><a href="#球体旋转" class="headerlink" title="球体旋转"></a>球体旋转</h5>　　旋转公式： <br><br>　　　　　  x1 = cosθ <em> x - sinθ </em> y;    y1 = cosθ <em> y + sinθ </em> x;　<br><br>　　其中x y 是旋转前坐标， θ是逆时针旋转角度， x1 y1是旋转后的坐标，参考来源 <a href="[http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html](http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html">坐标旋转公式</a>) <br><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></li>
+<li>开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果<h4 id="球体的相关公式"><a href="#球体的相关公式" class="headerlink" title="球体的相关公式"></a>球体的相关公式</h4><h5 id="标签分布"><a href="#标签分布" class="headerlink" title="标签分布"></a>标签分布</h5><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png" alt="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png"><br>　　在 球体坐标系中， x y  z是通过三个值来确定，即以下三个公式<br><br>　　　　　　  x = r <em> sinθ </em> cosφ  y = r <em> sinθ </em> sinφz= r <em> cos θ  <br><br>　　因此我们可以通过对θ φ取随机值，从而把标签分布在球体的表面上，在标签分布的时候，不能随意分布，要均匀分布。引入以下两个公式：<br><br>　　　　　　θ = arccos((2 </em> i - 1)/ len - 1); φ = θ <em> sqrt(len </em> PI)<br><br>　　其中，（2 * i - 1）/len - 1 是-1 到 1 中均匀分布的数列， 然后用arccos值得到均匀分布的θ值，第二个式子是θ的等差数列<h5 id="球体旋转"><a href="#球体旋转" class="headerlink" title="球体旋转"></a>球体旋转</h5>　　旋转公式： <br><br>　　　　　  x1 = cosθ <em> x - sinθ </em> y;    y1 = cosθ <em> y + sinθ </em> x;　<br><br>　　其中x y 是旋转前坐标， θ是逆时针旋转角度， x1 y1是旋转后的坐标，参考来源 <a href="http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html" target="_blank" rel="external">http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html</a> <br><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></li>
 </ul>
 </li>
 </ol>
@@ -375,7 +375,113 @@
     text-decoration: none;
 }
 </code></pre><p>```</p>
+<h4 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h4><p>　　js部分总共有两个对象</p>
+<ul>
+<li>初始化对像： 用来对整个标签云初始化，创建所有标签对象， 同时还有控制整个标签云运动的函数</li>
+<li><p>标签对象： 每个标签对应一个标签对象，通过初始化对象得到的x, y, 值 把自己放入标签云中适当的位置，同时通过z值设置自己的字体大小和透明度</p>
+<h5 id="初始化对象"><a href="#初始化对象" class="headerlink" title="初始化对象"></a>初始化对象</h5><p>  function Initialization(options) {</p>
+<pre><code>this.options = options;
+this.container = options.container;
+this.dataArr = options.data;
+this.init();
+</code></pre><p>  }</p>
+<p>  Initialization.prototype.init = function() {</p>
+<pre><code>let len = this.dataArr.length;
+let newTags = [];
 
+for(let i = 0; i &lt; len; i++) {
+    var angleA =  Math.acos((2*(i+1) - 1)/len - 1);
+    var angleB = angleA * Math.sqrt(len * Math.PI);
+
+    var z = R * Math.cos(angleA);
+    var y = R * Math.sin(angleA) * Math.sin(angleB);
+    var x = R * Math.sin(angleA) * Math.cos(angleB);
+    var color = &apos;#&apos; + Math.floor(Math.random()* 0xffffff).toString(16);
+    this.dataArr[i].style.color = color;
+    var newtag = new Tag(this.dataArr[i], x, y, z, this.options);
+    newtag.move();
+    newTags.push(newtag);
+    this.animate();
+}
+this.newTags = newTags;
+</code></pre><p>  }</p>
+</li>
+</ul>
+<pre><code>Initialization.prototype.rotateX =  function() {
+     let cos = Math.cos(angleX),
+        sin = Math.sin(angleX);
+    this.newTags.forEach((tag) =&gt; {
+        let y = tag.y * cos - tag.z * sin,
+            z = tag.z*cos + tag.y * sin;
+        tag.y = y;
+        tag.z = z;
+    });
+
+}
+
+Initialization.prototype.rotateY = function() {
+    let cos = Math.cos(angleY),
+        sin = Math.sin(angleY);
+    this.newTags.forEach((tag) =&gt; {
+        let x = tag.x * cos - tag.z * sin,
+            z = tag.z*cos + tag.x * sin;
+        tag.x = x;
+        tag.z = z;
+    });
+}
+Initialization.prototype.animate = function() {
+    var that = this;
+    setInterval(function() {
+        that.rotateX();
+        that.rotateY();
+        that.newTags.forEach((tag)=&gt; {
+            tag.move();
+
+        })
+    }, 20);
+}
+</code></pre><h5 id="标签对象"><a href="#标签对象" class="headerlink" title="标签对象"></a>标签对象</h5><pre><code>function Tag(data, x, y, z, options) {
+    this.options = options;
+    this.dataArr = options.data;
+    this.data = data;
+    this.x = x;
+    this.y = y;
+    this.z = z;
+}
+Tag.prototype.move = function() {
+    var len = this.dataArr.length;
+    var scale = _focalLength /(_focalLength  - this.z);
+    var alpha = (this.z +  R)/(2 * R);
+    // console.log(this.x);
+    this.data.style.left =  this.x + &apos;px&apos;;
+    this.data.style.top =  this.y + &apos;px&apos;;
+    this.data.style.fontSize = 14 * scale + &apos;px&apos;;
+    this.data.style.opacity = alpha + 0.5;
+}
+</code></pre><h5 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h5><pre><code>const  _baseAngle = Math.PI /  360,
+        R = 200;
+let speed = 1,
+    angleX = speed * _baseAngle,
+    angleY = -speed * _baseAngle,
+    _focalLength = R * 1.5;
+window.onload = function() {
+    let tags = document.getElementsByTagName(&apos;a&apos;);
+    let wrap = document.getElementById(&apos;wrap&apos;);
+
+    let options = {
+        data: tags,
+        container: wrap
+    }
+    let tagCloud = new Initialization(options);
+    document.addEventListener(&apos;mousemove&apos;, function(e) {
+
+         angleY = 2 * (e.clientX/ document.body.getBoundingClientRect().width- 0.5) * speed  * _baseAngle;
+         angleX = 2 * (e.clientY/ document.body.getBoundingClientRect().height - 0.5) * speed  * _baseAngle;
+
+
+    })
+}
+</code></pre>
           
         
       
