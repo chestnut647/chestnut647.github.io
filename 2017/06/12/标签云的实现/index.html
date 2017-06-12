@@ -87,16 +87,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="3D标签云的实现　　最近在做一些小Demo，看到了3D标签云觉得很酷炫，就学着做了一下。虽然看起来有点难，但是分解了看其实还是很普通的js运动的实现。效果预览地址) 分解 球体的实现 通过设置角度（α， β）确定标签的坐标位置 球体的实现是通过字体大小和透明度来实现的，远处的标签更小、透明度更低   球体的旋转 开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果球体的相关公式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/05/25/hello-world/index.html">
+<meta property="og:title" content="标签云的实现">
+<meta property="og:url" content="http://yoursite.com/2017/06/12/标签云的实现/index.html">
 <meta property="og:site_name" content="刘小窝">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-05-25T04:29:53.323Z">
+<meta property="og:description" content="3D标签云的实现　　最近在做一些小Demo，看到了3D标签云觉得很酷炫，就学着做了一下。虽然看起来有点难，但是分解了看其实还是很普通的js运动的实现。效果预览地址) 分解 球体的实现 通过设置角度（α， β）确定标签的坐标位置 球体的实现是通过字体大小和透明度来实现的，远处的标签更小、透明度更低   球体的旋转 开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果球体的相关公式">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png">
+<meta property="og:updated_time" content="2017-06-12T05:42:02.393Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="标签云的实现">
+<meta name="twitter:description" content="3D标签云的实现　　最近在做一些小Demo，看到了3D标签云觉得很酷炫，就学着做了一下。虽然看起来有点难，但是分解了看其实还是很普通的js运动的实现。效果预览地址) 分解 球体的实现 通过设置角度（α， β）确定标签的坐标位置 球体的实现是通过字体大小和透明度来实现的，远处的标签更小、透明度更低   球体的旋转 开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果球体的相关公式">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png">
 
 
 
@@ -124,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/25/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/12/标签云的实现/"/>
 
 
 
 
 
-  <title> Hello World | 刘小窝 </title>
+  <title> 标签云的实现 | 刘小窝 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +261,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/25/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/标签云的实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chestnut_647">
@@ -280,7 +282,7 @@
             
             
               
-                Hello World
+                标签云的实现
               
             
           </h1>
@@ -295,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T13:29:26+08:00">
-                2017-05-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T11:10:20+08:00">
+                2017-06-12
               </time>
             
 
@@ -306,6 +308,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Demo/" itemprop="url" rel="index">
+                    <span itemprop="name">Demo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -314,9 +338,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/25/hello-world/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/12/标签云的实现/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/25/hello-world/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/12/标签云的实现/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -342,16 +366,19 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <h2 id="3D标签云的实现"><a href="#3D标签云的实现" class="headerlink" title="3D标签云的实现"></a>3D标签云的实现</h2><p>　　最近在做一些小Demo，看到了3D标签云觉得很酷炫，就学着做了一下。虽然看起来有点难，但是分解了看其实还是很普通的js运动的实现。<a href="[https://chestnut647.github.io/Demo/cloudTag/](https://chestnut647.github.io/Demo/cloudTag/">效果预览地址</a>)</p>
+<h3 id="分解"><a href="#分解" class="headerlink" title="分解"></a>分解</h3><ol>
+<li>球体的实现<ul>
+<li>通过设置角度（α， β）确定标签的坐标位置</li>
+<li>球体的实现是通过字体大小和透明度来实现的，远处的标签更小、透明度更低</li>
+</ul>
+</li>
+<li>球体的旋转<ul>
+<li>开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果<h4 id="球体的相关公式"><a href="#球体的相关公式" class="headerlink" title="球体的相关公式"></a>球体的相关公式</h4><h5 id="标签分布"><a href="#标签分布" class="headerlink" title="标签分布"></a>标签分布</h5><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png" alt="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png"><br>　　在 球体坐标系中， x y  z是通过三个值来确定，即以下三个公式<br><br>　　　　　　  x = r <em> sinθ </em> cosφ  y = r <em> sinθ </em> sinφz= r <em> cos θ  <br><br>　　因此我们可以通过对θ φ取随机值，从而把标签分布在球体的表面上，在标签分布的时候，不能随意分布，要均匀分布。引入以下两个公式：<br><br>　　　　　　θ = arccos((2 </em> i - 1)/ len - 1); φ = θ <em> sqrt(len </em> PI)<br><br>　　其中，（2 * i - 1）/len - 1 是-1 到 1 中均匀分布的数列， 然后用arccos值得到均匀分布的θ值，第二个式子是θ的等差数列<h5 id="球体旋转"><a href="#球体旋转" class="headerlink" title="球体旋转"></a>球体旋转</h5>　　旋转公式： <br><br>　　　　　  x1 = cosθ <em> x - sinθ </em> y;    y1 = cosθ <em> y + sinθ </em> x;　<br><br>　　其中x y 是旋转前坐标， θ是逆时针旋转角度， x1 y1是旋转后的坐标，参考来源 <a href="[http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html](http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html">坐标旋转公式</a>)<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></li>
+</ul>
+</li>
+</ol>
+<h4 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;wrap&quot;&gt;</div><div class="line">	&lt;a href=&quot;#&quot; class=&quot;tag&quot;&gt;前端学习&lt;/a&gt;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -387,15 +414,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/06/11/github使用之本地文件上传/" rel="next" title="github使用之本地文件上传">
+                <i class="fa fa-chevron-left"></i> github使用之本地文件上传
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/25/This-is-my-first-blog/" rel="prev" title="This is my first blog">
-                This is my first blog <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3D标签云的实现"><span class="nav-number">1.</span> <span class="nav-text">3D标签云的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分解"><span class="nav-number">1.1.</span> <span class="nav-text">分解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#球体的相关公式"><span class="nav-number">1.1.1.</span> <span class="nav-text">球体的相关公式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#标签分布"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">标签分布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#球体旋转"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">球体旋转</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html部分"><span class="nav-number">1.2.1.</span> <span class="nav-text">html部分</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -670,9 +697,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/05/25/hello-world/';
-          this.page.identifier = '2017/05/25/hello-world/';
-          this.page.title = 'Hello World';
+          this.page.url = 'http://yoursite.com/2017/06/12/标签云的实现/';
+          this.page.identifier = '2017/06/12/标签云的实现/';
+          this.page.title = '标签云的实现';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://chestnut647-github-io.disqus.com/embed.js';
