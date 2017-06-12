@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="刘小窝">
 <meta property="og:description" content="3D标签云的实现　　最近在做一些小Demo，看到了3D标签云觉得很酷炫，就学着做了一下。虽然看起来有点难，但是分解了看其实还是很普通的js运动的实现。效果预览地址) 分解 球体的实现 通过设置角度（α， β）确定标签的坐标位置 球体的实现是通过字体大小和透明度来实现的，远处的标签更小、透明度更低   球体的旋转 开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果球体的相关公式">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png">
-<meta property="og:updated_time" content="2017-06-12T06:19:22.582Z">
+<meta property="og:updated_time" content="2017-06-12T06:28:54.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="标签云的实现">
 <meta name="twitter:description" content="3D标签云的实现　　最近在做一些小Demo，看到了3D标签云觉得很酷炫，就学着做了一下。虽然看起来有点难，但是分解了看其实还是很普通的js运动的实现。效果预览地址) 分解 球体的实现 通过设置角度（α， β）确定标签的坐标位置 球体的实现是通过字体大小和透明度来实现的，远处的标签更小、透明度更低   球体的旋转 开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果球体的相关公式">
@@ -361,121 +361,15 @@
 <li>a标签是绝对定位， 在圆上的坐标x y 即为a的left 和top 值<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;wrap&quot;&gt;</div><div class="line">&lt;a href=&quot;#&quot; class=&quot;tag&quot;&gt;前端学习&lt;/a&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>#wrap {<br>    position: relative;<br>    left: 50%;<br>    top:  50%;<br>    }</p>
-<pre><code>#wrap .tag {
-    display: inline-block;
-    position:absolute;
-    height: 50px;
-    line-height: 50px;
-    text-decoration: none;
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### js部分</div><div class="line"></div><div class="line">　　js部分总共有两个对象</div><div class="line">- 初始化对像： 用来对整个标签云初始化，创建所有标签对象， 同时还有控制整个标签云运动的函数</div><div class="line">- 标签对象： 每个标签对应一个标签对象，通过初始化对象得到的x, y, 值 把自己放入标签云中适当的位置，同时通过z值设置自己的字体大小和透明度</div><div class="line"></div><div class="line"></div><div class="line">##### 初始化对象</div></pre></td></tr></table></figure>
-<pre><code>function Initialization(options) {
-    this.options = options;
-    this.container = options.container;
-    this.dataArr = options.data;
-    this.init();
-}
-
-Initialization.prototype.init = function() {
-    let len = this.dataArr.length;
-    let newTags = [];
-
-    for(let i = 0; i &lt; len; i++) {
-        var angleA =  Math.acos((2*(i+1) - 1)/len - 1);
-        var angleB = angleA * Math.sqrt(len * Math.PI);
-
-        var z = R * Math.cos(angleA);
-        var y = R * Math.sin(angleA) * Math.sin(angleB);
-        var x = R * Math.sin(angleA) * Math.cos(angleB);
-        var color = &apos;#&apos; + Math.floor(Math.random()* 0xffffff).toString(16);
-        this.dataArr[i].style.color = color;
-        var newtag = new Tag(this.dataArr[i], x, y, z, this.options);
-        newtag.move();
-        newTags.push(newtag);
-        this.animate();
-    }
-    this.newTags = newTags;
-}
-
-
-Initialization.prototype.rotateX =  function() {
-     let cos = Math.cos(angleX),
-        sin = Math.sin(angleX);
-    this.newTags.forEach((tag) =&gt; {
-        let y = tag.y * cos - tag.z * sin,
-            z = tag.z*cos + tag.y * sin;
-        tag.y = y;
-        tag.z = z;
-    });
-
-}
-
-Initialization.prototype.rotateY = function() {
-    let cos = Math.cos(angleY),
-        sin = Math.sin(angleY);
-    this.newTags.forEach((tag) =&gt; {
-        let x = tag.x * cos - tag.z * sin,
-            z = tag.z*cos + tag.x * sin;
-        tag.x = x;
-        tag.z = z;
-    });
-}
-Initialization.prototype.animate = function() {
-    var that = this;
-    setInterval(function() {
-        that.rotateX();
-        that.rotateY();
-        that.newTags.forEach((tag)=&gt; {
-            tag.move();
-
-        })
-    }, 20);
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">##### 标签对象</div></pre></td></tr></table></figure>
-<pre><code>function Tag(data, x, y, z, options) {
-    this.options = options;
-    this.dataArr = options.data;
-    this.data = data;
-    this.x = x;
-    this.y = y;
-    this.z = z;
-}
-Tag.prototype.move = function() {
-    var len = this.dataArr.length;
-    var scale = _focalLength /(_focalLength  - this.z);
-    var alpha = (this.z +  R)/(2 * R);
-    // console.log(this.x);
-    this.data.style.left =  this.x + &apos;px&apos;;
-    this.data.style.top =  this.y + &apos;px&apos;;
-    this.data.style.fontSize = 14 * scale + &apos;px&apos;;
-    this.data.style.opacity = alpha + 0.5;
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">##### 主程序</div></pre></td></tr></table></figure>
-<pre><code>const  _baseAngle = Math.PI /  360,
-        R = 200;
-let speed = 1,
-    angleX = speed * _baseAngle,
-    angleY = -speed * _baseAngle,
-    _focalLength = R * 1.5;
-window.onload = function() {
-    let tags = document.getElementsByTagName(&apos;a&apos;);
-    let wrap = document.getElementById(&apos;wrap&apos;);
-
-    let options = {
-        data: tags,
-        container: wrap
-    }
-    let tagCloud = new Initialization(options);
-    document.addEventListener(&apos;mousemove&apos;, function(e) {
-
-         angleY = 2 * (e.clientX/ document.body.getBoundingClientRect().width- 0.5) * speed  * _baseAngle;
-         angleX = 2 * (e.clientY/ document.body.getBoundingClientRect().height - 0.5) * speed  * _baseAngle;
-
-
-    })
-}  
-</code></pre><p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#wrap &#123;</div><div class="line">    position: relative;</div><div class="line">    left: 50%;</div><div class="line">    top:  50%;</div><div class="line">    &#125;</div><div class="line">    #wrap .tag &#123;</div><div class="line">        display: inline-block;</div><div class="line">        position:absolute;</div><div class="line">        height: 50px;</div><div class="line">        line-height: 50px;</div><div class="line">        text-decoration: none;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h4><p>　　js部分总共有两个对象</p>
+<ul>
+<li>初始化对像： 用来对整个标签云初始化，创建所有标签对象， 同时还有控制整个标签云运动的函数</li>
+<li>标签对象： 每个标签对应一个标签对象，通过初始化对象得到的x, y, 值 把自己放入标签云中适当的位置，同时通过z值设置自己的字体大小和透明度</li>
+</ul>
+<h5 id="初始化对象"><a href="#初始化对象" class="headerlink" title="初始化对象"></a>初始化对象</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">function Initialization(options) &#123;</div><div class="line">    this.options = options;</div><div class="line">    this.container = options.container;</div><div class="line">    this.dataArr = options.data;</div><div class="line">    this.init();</div><div class="line">&#125;</div><div class="line">	</div><div class="line">Initialization.prototype.init = function() &#123;</div><div class="line">        let len = this.dataArr.length;</div><div class="line">        let newTags = [];</div><div class="line">        for(let i = 0; i &lt; len; i++) &#123;</div><div class="line">            var angleA =  Math.acos((2*(i+1) -1)/len - 1); </div><div class="line">            var angleB = angleA * Math.sqrt(len *Math.PI);</div><div class="line">            var z = R * Math.cos(angleA);</div><div class="line">            var y = R * Math.sin(angleA)*Math.sin(angleB);</div><div class="line">            var x = R * Math.sin(angleA) *Math.cos(angleB);</div><div class="line">            var color = &apos;#&apos; +Math.floor(Math.random()*0xffffff).toString(16);</div><div class="line">            this.dataArr[i].style.color = color;</div><div class="line">            var newtag = new Tag(this.dataArr[i], x,y, z, this.options);</div><div class="line">            newtag.move();</div><div class="line">            newTags.push(newtag);</div><div class="line">            this.animate();</div><div class="line">      &#125;</div><div class="line">      this.newTags = newTags;</div><div class="line">&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">Initialization.prototype.rotateX =  function() &#123;</div><div class="line">     let cos = Math.cos(angleX),</div><div class="line">        sin = Math.sin(angleX);</div><div class="line">    this.newTags.forEach((tag) =&gt; &#123;</div><div class="line">        let y = tag.y * cos - tag.z * sin,</div><div class="line">            z = tag.z*cos + tag.y * sin;</div><div class="line">        tag.y = y;</div><div class="line">        tag.z = z;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">&#125;</div><div class="line">	</div><div class="line">Initialization.prototype.rotateY = function() &#123;</div><div class="line">    let cos = Math.cos(angleY),</div><div class="line">        sin = Math.sin(angleY);</div><div class="line">    this.newTags.forEach((tag) =&gt; &#123;</div><div class="line">        let x = tag.x * cos - tag.z * sin,</div><div class="line">            z = tag.z*cos + tag.x * sin;</div><div class="line">        tag.x = x;</div><div class="line">        tag.z = z;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">Initialization.prototype.animate = function() &#123;</div><div class="line">    var that = this;</div><div class="line">    setInterval(function() &#123;</div><div class="line">        that.rotateX();</div><div class="line">        that.rotateY();</div><div class="line">        that.newTags.forEach((tag)=&gt; &#123;</div><div class="line">            tag.move();</div><div class="line"></div><div class="line">        &#125;)</div><div class="line">    &#125;, 20);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="标签对象"><a href="#标签对象" class="headerlink" title="标签对象"></a>标签对象</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function Tag(data, x, y, z, options) &#123;</div><div class="line">    this.options = options;</div><div class="line">    this.dataArr = options.data;</div><div class="line">    this.data = data;</div><div class="line">    this.x = x;</div><div class="line">    this.y = y;</div><div class="line">    this.z = z;</div><div class="line">&#125;</div><div class="line">Tag.prototype.move = function() &#123;</div><div class="line">    var len = this.dataArr.length;</div><div class="line">    var scale = _focalLength /(_focalLength  - this.z);</div><div class="line">    var alpha = (this.z +  R)/(2 * R);</div><div class="line">    this.data.style.left =  this.x + &apos;px&apos;;</div><div class="line">    this.data.style.top =  this.y + &apos;px&apos;;</div><div class="line">    this.data.style.fontSize = 14 * scale + &apos;px&apos;;</div><div class="line">    this.data.style.opacity = alpha + 0.5;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">const  _baseAngle = Math.PI /  360,</div><div class="line">        R = 200;</div><div class="line">let speed = 1,</div><div class="line">    angleX = speed * _baseAngle,</div><div class="line">    angleY = -speed * _baseAngle,</div><div class="line">    _focalLength = R * 1.5;</div><div class="line">window.onload = function() &#123;</div><div class="line">    let tags = document.getElementsByTagName(&apos;a&apos;);</div><div class="line">    let wrap = document.getElementById(&apos;wrap&apos;);</div><div class="line"></div><div class="line">    let options = &#123;</div><div class="line">        data: tags,</div><div class="line">        container: wrap</div><div class="line">    &#125;</div><div class="line">    let tagCloud = new Initialization(options);</div><div class="line">    document.addEventListener(&apos;mousemove&apos;, function(e) &#123;</div><div class="line"></div><div class="line">         angleY = 2 * (e.clientX/ document.body.getBoundingClientRect().width- 0.5) * speed  * _baseAngle;</div><div class="line">         angleX = 2 * (e.clientY/ document.body.getBoundingClientRect().height - 0.5) * speed  * _baseAngle;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -658,7 +552,7 @@ window.onload = function() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3D标签云的实现"><span class="nav-number">1.</span> <span class="nav-text">3D标签云的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分解"><span class="nav-number">1.1.</span> <span class="nav-text">分解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#球体的相关公式"><span class="nav-number">1.1.1.</span> <span class="nav-text">球体的相关公式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#标签分布"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">标签分布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#球体旋转"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">球体旋转</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html部分"><span class="nav-number">1.2.1.</span> <span class="nav-text">html部分</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3D标签云的实现"><span class="nav-number">1.</span> <span class="nav-text">3D标签云的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分解"><span class="nav-number">1.1.</span> <span class="nav-text">分解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#球体的相关公式"><span class="nav-number">1.1.1.</span> <span class="nav-text">球体的相关公式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#标签分布"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">标签分布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#球体旋转"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">球体旋转</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html部分"><span class="nav-number">1.2.1.</span> <span class="nav-text">html部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js部分"><span class="nav-number">1.2.2.</span> <span class="nav-text">js部分</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#初始化对象"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">初始化对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标签对象"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">标签对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主程序"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">主程序</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
