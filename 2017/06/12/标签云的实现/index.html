@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="刘小窝">
 <meta property="og:description" content="3D标签云的实现　　最近在做一些小Demo，看到了3D标签云觉得很酷炫，就学着做了一下。虽然看起来有点难，但是分解了看其实还是很普通的js运动的实现。效果预览地址) 分解 球体的实现 通过设置角度（α， β）确定标签的坐标位置 球体的实现是通过字体大小和透明度来实现的，远处的标签更小、透明度更低   球体的旋转 开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果球体的相关公式">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png">
-<meta property="og:updated_time" content="2017-06-12T06:14:39.965Z">
+<meta property="og:updated_time" content="2017-06-12T06:19:22.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="标签云的实现">
 <meta name="twitter:description" content="3D标签云的实现　　最近在做一些小Demo，看到了3D标签云觉得很酷炫，就学着做了一下。虽然看起来有点难，但是分解了看其实还是很普通的js运动的实现。效果预览地址) 分解 球体的实现 通过设置角度（α， β）确定标签的坐标位置 球体的实现是通过字体大小和透明度来实现的，远处的标签更小、透明度更低   球体的旋转 开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果球体的相关公式">
@@ -352,11 +352,10 @@
 </ul>
 </li>
 <li>球体的旋转<ul>
-<li>开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果<h4 id="球体的相关公式"><a href="#球体的相关公式" class="headerlink" title="球体的相关公式"></a>球体的相关公式</h4><h5 id="标签分布"><a href="#标签分布" class="headerlink" title="标签分布"></a>标签分布</h5><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png" alt="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png"><br>　　在 球体坐标系中， x y  z是通过三个值来确定，即以下三个公式<br><br>　　　　　　  x = r <em> sinθ </em> cosφ  y = r <em> sinθ </em> sinφz= r <em> cos θ  <br><br>　　因此我们可以通过对θ φ取随机值，从而把标签分布在球体的表面上，在标签分布的时候，不能随意分布，要均匀分布。引入以下两个公式：<br><br>　　　　　　θ = arccos((2 </em> i - 1)/ len - 1); φ = θ <em> sqrt(len </em> PI)<br><br>　　其中，（2 * i - 1）/len - 1 是-1 到 1 中均匀分布的数列， 然后用arccos值得到均匀分布的θ值，第二个式子是θ的等差数列<h5 id="球体旋转"><a href="#球体旋转" class="headerlink" title="球体旋转"></a>球体旋转</h5>　　旋转公式： <br><br>　　　　　  x1 = cosθ <em> x - sinθ </em> y;    y1 = cosθ <em> y + sinθ </em> x;　<br><br>　　其中x y 是旋转前坐标， θ是逆时针旋转角度， x1 y1是旋转后的坐标，参考来源 <a href="http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html" target="_blank" rel="external">http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html</a> <br><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></li>
+<li>开启定时器，定时通过鼠标的位置来改变球体各个标签位置来达到旋转动画的效果<br><br><h4 id="球体的相关公式"><a href="#球体的相关公式" class="headerlink" title="球体的相关公式"></a>球体的相关公式</h4><h5 id="标签分布"><a href="#标签分布" class="headerlink" title="标签分布"></a>标签分布</h5><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png" alt="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Spherical_with_grid.svg/600px-Spherical_with_grid.svg.png"><br>　　在 球体坐标系中， x y  z是通过三个值来确定，即以下三个公式<br><br>　　　　　　  x = r <em> sinθ </em> cosφ  y = r <em> sinθ </em> sinφz= r <em> cos θ  <br><br>　　因此我们可以通过对θ φ取随机值，从而把标签分布在球体的表面上，在标签分布的时候，不能随意分布，要均匀分布。引入以下两个公式：<br><br>　　　　　　θ = arccos((2 </em> i - 1)/ len - 1); φ = θ <em> sqrt(len </em> PI)<br><br>　　其中，（2 * i - 1）/len - 1 是-1 到 1 中均匀分布的数列， 然后用arccos值得到均匀分布的θ值，第二个式子是θ的等差数列<h5 id="球体旋转"><a href="#球体旋转" class="headerlink" title="球体旋转"></a>球体旋转</h5>　　旋转公式： <br><br>　　　　　  x1 = cosθ <em> x - sinθ </em> y;    y1 = cosθ <em> y + sinθ </em> x;　<br><br>　　其中x y 是旋转前坐标， θ是逆时针旋转角度， x1 y1是旋转后的坐标，参考来源 <a href="http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html" target="_blank" rel="external">http://www.cnblogs.com/ywxgod/archive/2010/08/06/1793609.html</a><br><br><br>&gt;<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h4>使用一个wrap来包裹住所有的标签</li>
 </ul>
 </li>
 </ol>
-<h4 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h4><p>使用一个wrap来包裹住所有的标签</p>
 <ul>
 <li>wrap是一个相对定位，用来代表圆心</li>
 <li>a标签是绝对定位， 在圆上的坐标x y 即为a的left 和top 值<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;wrap&quot;&gt;</div><div class="line">&lt;a href=&quot;#&quot; class=&quot;tag&quot;&gt;前端学习&lt;/a&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
@@ -370,7 +369,7 @@
     line-height: 50px;
     text-decoration: none;
 }
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### js部分</div><div class="line">　　js部分总共有两个对象</div><div class="line">- 初始化对像： 用来对整个标签云初始化，创建所有标签对象， 同时还有控制整个标签云运动的函数</div><div class="line">- 标签对象： 每个标签对应一个标签对象，通过初始化对象得到的x, y, 值 把自己放入标签云中适当的位置，同时通过z值设置自己的字体大小和透明度</div><div class="line"></div><div class="line">##### 初始化对象</div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### js部分</div><div class="line"></div><div class="line">　　js部分总共有两个对象</div><div class="line">- 初始化对像： 用来对整个标签云初始化，创建所有标签对象， 同时还有控制整个标签云运动的函数</div><div class="line">- 标签对象： 每个标签对应一个标签对象，通过初始化对象得到的x, y, 值 把自己放入标签云中适当的位置，同时通过z值设置自己的字体大小和透明度</div><div class="line"></div><div class="line"></div><div class="line">##### 初始化对象</div></pre></td></tr></table></figure>
 <pre><code>function Initialization(options) {
     this.options = options;
     this.container = options.container;
