@@ -260,6 +260,177 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/创建一个栅格系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chestnut_647">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/18/创建一个栅格系统/" itemprop="url">
+                  创建一个栅格系统
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T16:08:00+08:00">
+                2017-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/18/创建一个栅格系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/18/创建一个栅格系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h2><p>构成一个栅格系统需要以下四个部分：</p>
+<ul>
+<li>container：</li>
+<li>row</li>
+<li>column</li>
+<li>gutter（column的间隙）<h3 id="container"><a href="#container" class="headerlink" title="container"></a>container</h3>栅格系统的容易， 用来固定宽度<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">width:100%;</div><div class="line">max-width:1200px;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="row"><a href="#row" class="headerlink" title="row"></a>row</h3><p>清除浮动来保障每行内的项目不会跑到其他行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.row:before, </div><div class="line">.row:after &#123;</div><div class="line">    content:&quot;&quot;;</div><div class="line">    display:table;</div><div class="line">    clear:both;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="column-最复杂"><a href="#column-最复杂" class="headerlink" title="column(最复杂)"></a>column(最复杂)</h3><h4 id="column定位"><a href="#column定位" class="headerlink" title="column定位"></a>column定位</h4><ul>
+<li>有多种形式：Floats, inline-blocks, display-table, display-flex</li>
+<li>可采用float(用的最多)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[class*=&apos;col-&apos;] &#123;</div><div class="line">      float: left;</div><div class="line">      &lt;!--如何内容为空，则float不起来--&gt;</div><div class="line">      min-height: 1px; </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="column宽度"><a href="#column宽度" class="headerlink" title="column宽度"></a>column宽度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[class*=&apos;col-&apos;] &#123;</div><div class="line">        float: left;</div><div class="line">        min-height: 1px;</div><div class="line">        &lt;!--六栏， 用100%除以6--&gt;</div><div class="line">        width:16.6%;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.col-1&#123;</div><div class="line">    width: 16.66%; </div><div class="line">&#125;</div><div class="line">.col-2&#123;</div><div class="line">    width: 33.33%; </div><div class="line">&#125;</div><div class="line">.col-3&#123;</div><div class="line">    width: 50%; </div><div class="line">&#125;</div><div class="line">.col-4&#123;</div><div class="line">    width: 66.664%;</div><div class="line">&#125;</div><div class="line">.col-5&#123;</div><div class="line">    width: 83.33%;</div><div class="line">&#125;</div><div class="line">.col-6&#123;</div><div class="line">    width: 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="gutters"><a href="#gutters" class="headerlink" title="gutters"></a>gutters</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.grid-container *&#123;</div><div class="line">&lt;!--用怪异盒模型保证盒子不会变大--&gt;</div><div class="line">    box-sizing: border-box; </div><div class="line">&#125;</div><div class="line"></div><div class="line">[class*=&apos;col-&apos;] &#123;</div><div class="line">    float: left;</div><div class="line">    min-height: 1px; </div><div class="line">    width: 16.66%; </div><div class="line">    /*-- our gutter --*/</div><div class="line">    padding: 12px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">@media all and (max-width:800px)&#123;</div><div class="line">     .col-1&#123; width: 33.33%;    &#125;</div><div class="line">     .col-2&#123; width: 50%;        &#125;</div><div class="line">     .col-3&#123; width: 83.33%;    &#125;</div><div class="line">     .col-4&#123; width: 100%;    &#125;</div><div class="line">     .col-5&#123; width: 100%;    &#125;</div><div class="line">     .col-6&#123; width: 100%;      &#125;</div><div class="line"></div><div class="line">     .row .col-2:last-of-type&#123;</div><div class="line">         width: 100%; </div><div class="line">     &#125;</div><div class="line"></div><div class="line">     .row .col-5 ~ .col-1&#123;</div><div class="line">         width: 100%; </div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line">  @media all and (max-width:650px)&#123;</div><div class="line">     .col-1&#123; width: 50%;        &#125;</div><div class="line">     .col-2&#123; width: 100%;    &#125;</div><div class="line">     .col-3&#123; width: 100%;    &#125;</div><div class="line">     .col-4&#123; width: 100%;    &#125;</div><div class="line">     .col-5&#123; width: 100%;    &#125;</div><div class="line">     .col-6&#123; width: 100%;      &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/标签云的实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -947,7 +1118,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -958,7 +1129,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
