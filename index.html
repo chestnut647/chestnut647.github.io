@@ -260,6 +260,201 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/21/基于vue2-0的饿了么单页面应用实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chestnut_647">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/21/基于vue2-0的饿了么单页面应用实现/" itemprop="url">
+                  基于vue2.0的饿了么单页面应用实现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-21T15:34:11+08:00">
+                2017-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/小项目/" itemprop="url" rel="index">
+                    <span itemprop="name">小项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/21/基于vue2-0的饿了么单页面应用实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/21/基于vue2-0的饿了么单页面应用实现/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近在学习vue2.0的使用，学习框架还是要上手实践最好。现在对其做一个总结</p>
+<h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><ul>
+<li>这是最后的成果图，数据以及图片是慕课网实战视频里提供的resource里拿来使用的</li>
+<li><img src="C:\Users\chestnut_647\Desktop\pic\1498032416(1" alt="image">.png)</li>
+</ul>
+<h4 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h4><ul>
+<li>头部</li>
+<li>nav切换部分</li>
+<li>页面显示部分：关键 </li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="代码组织"><a href="#代码组织" class="headerlink" title="代码组织"></a>代码组织</h4><p><img src="‪C:\Users\chestnut_647\Desktop\pic\1498033311(1" alt="image">.png)</p>
+<h4 id="整体框架"><a href="#整体框架" class="headerlink" title="整体框架"></a>整体框架</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;app&quot;&gt;</div><div class="line">     &lt;app-header&gt;&lt;/app-header&gt;</div><div class="line">     &lt;div class=&quot;tab  border-1px&quot;&gt;</div><div class="line">         &lt;div class=&quot;tab-item&quot;&gt; &lt;router-link to=&quot;/goods&quot; &gt;商品&lt;/router-link&gt; &lt;/div&gt;</div><div class="line">         &lt;div class=&quot;tab-item&quot;&gt;&lt;router-link to=&quot;/ratings&quot; &gt;评论&lt;/router-link&gt; &lt;/div&gt;</div><div class="line">         &lt;div class=&quot;tab-item&quot;&gt;&lt;router-link to=&quot;/seller&quot; &gt;商家&lt;/router-link&gt; &lt;/div&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">     &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line"></div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>页面的整体布局主要就是分为三个部分<ul>
+<li>app-header</li>
+<li>tab-item</li>
+<li>页面主体</li>
+</ul>
+</li>
+<li>tab-item 和页面主题使用vue-router实现，通过router-link-to点击对应展现不同的页面组件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">routes: [&#123;</div><div class="line">           path: &apos;/goods&apos;,</div><div class="line">           name: &apos;Goods&apos;,</div><div class="line">           component: Goods</div><div class="line">       &#125;,</div><div class="line">       &#123;</div><div class="line">           path: &apos;/seller&apos;,</div><div class="line">           name: &apos;Seller&apos;,</div><div class="line">           component: Seller</div><div class="line">       &#125;,</div><div class="line">       &#123;</div><div class="line">           path: &apos;/ratings&apos;,</div><div class="line">           name: &apos;Ratings&apos;,</div><div class="line">           component: Ratings</div><div class="line">       &#125;</div><div class="line">   ]</div></pre></td></tr></table></figure>
+<h4 id="app-header实现"><a href="#app-header实现" class="headerlink" title="app-header实现"></a>app-header实现</h4><ul>
+<li>这一部分没有什么逻辑功能，主要是页面布局、背景模糊、以及vue过渡效果显示三个部分</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!--包含头部所有信息，上半部分--&gt;</div><div class="line">&lt;div class=&quot;content-wrap&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;!--头部下半部分，布告栏缩略版--&gt;</div><div class="line">&lt;div class=&quot;bulletin-wrap&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;!--背景图片（用于背景模糊）--&gt;</div><div class="line">&lt;div class=&quot;background&quot;&gt;</div><div class="line">    &lt;img&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;!--展示布告详细信息--&gt;</div><div class="line">&lt;div class=&quot;detail&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h5 id="背景模糊"><a href="#背景模糊" class="headerlink" title="背景模糊"></a>背景模糊</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!--给背景图片模糊处理，vue会自动添加兼容性处理--&gt;</div><div class="line">filter:blur(10px)</div></pre></td></tr></table></figure>
+<h5 id="sticky-footer"><a href="#sticky-footer" class="headerlink" title="sticky footer"></a>sticky footer</h5><ul>
+<li>布告详细信息的页面布局是一个sticky footer</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!--一般框架--&gt;</div><div class="line">&lt;div class=&quot;main-wrapper&quot;&gt;</div><div class="line">    &lt;div class=&quot;main&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=&quot;footer&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.main-wrapper &#123;</div><div class="line">&lt;!--保证就算main不够高页面也能是100%--&gt;</div><div class="line">    min-height: 100%;</div><div class="line">&#125;</div><div class="line">.main &#123;</div><div class="line">&lt;!--50px指的是footer的高度--&gt;</div><div class="line">    padding-bottom: 50px;</div><div class="line">&#125;</div><div class="line">.footer &#123;</div><div class="line">    margin-top: -50px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/创建一个栅格系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1118,7 +1313,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1129,7 +1324,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
