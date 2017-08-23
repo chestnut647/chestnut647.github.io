@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/23/深度拷贝/index.html">
 <meta property="og:site_name" content="刘小窝">
 <meta property="og:description" content="深度拷贝含义 在js里变量的类型分为值类型和引用类型。 引用类型在赋值的时候只是将变量指向同一块内存地址。如下所示，复制时会互相干扰  123456var obj = &amp;#123;    a: 1&amp;#125;obj2 = obj;obj2.a = 2;obj1.a // 2  若采用简单的一次循环复制（浅复制）,当对象里的value是还是引用类型时，仍然存在相互干扰问题  123456789101">
-<meta property="og:updated_time" content="2017-08-23T09:05:13.388Z">
+<meta property="og:updated_time" content="2017-08-23T09:08:01.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度拷贝">
 <meta name="twitter:description" content="深度拷贝含义 在js里变量的类型分为值类型和引用类型。 引用类型在赋值的时候只是将变量指向同一块内存地址。如下所示，复制时会互相干扰  123456var obj = &amp;#123;    a: 1&amp;#125;obj2 = obj;obj2.a = 2;obj1.a // 2  若采用简单的一次循环复制（浅复制）,当对象里的value是还是引用类型时，仍然存在相互干扰问题  123456789101">
@@ -382,11 +382,11 @@
 </li>
 <li>但该方法存在缺陷：<ul>
 <li>序列化js对象时，所有函数以及原型成员都会被忽略</li>
-<li>值为undefined的值也会被跳过<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">a</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>],</div><div class="line">    <span class="attr">b</span>: &#123;</div><div class="line">        <span class="attr">c</span>: <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&lt;!--对象转换为json字符串--&gt;</div><div class="line"><span class="keyword">var</span> jsonText = Json.stringify(obj);</div><div class="line">&lt;!--在把json字符串解析为对象--&gt;</div><div class="line">var dist = Json.parse(jsonTest);</div></pre></td></tr></table></figure>
-</li>
+<li>值为undefined的值也会被跳过</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">a</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>],</div><div class="line">    <span class="attr">b</span>: &#123;</div><div class="line">        <span class="attr">c</span>: <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&lt;!--对象转换为json字符串--&gt;</div><div class="line"><span class="keyword">var</span> jsonText = Json.stringify(obj);</div><div class="line">&lt;!--在把json字符串解析为对象--&gt;</div><div class="line">var dist = Json.parse(jsonTest);</div></pre></td></tr></table></figure>
 
       
     </div>
