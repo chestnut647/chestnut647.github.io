@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/01/抓怪物小游戏/index.html">
 <meta property="og:site_name" content="刘小窝">
 <meta property="og:description" content="canvas 之前就学习过canvas，但一直没有实践，这次做一个小的Demo熟悉一下  在线预览地址抓怪物代码地址 要点 canvas使用：图片渲染 图片加载完成才可以渲染    事件处理 运动怎么保持不卡顿   主循环 整个函数的逻辑     准备及对象canvas创建12345var canvas = document.createElement(&apos;canvas&apos;);var ctx = ca">
-<meta property="og:updated_time" content="2017-09-01T12:06:28.975Z">
+<meta property="og:updated_time" content="2017-09-01T12:09:18.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="抓怪物小游戏">
 <meta name="twitter:description" content="canvas 之前就学习过canvas，但一直没有实践，这次做一个小的Demo熟悉一下  在线预览地址抓怪物代码地址 要点 canvas使用：图片渲染 图片加载完成才可以渲染    事件处理 运动怎么保持不卡顿   主循环 整个函数的逻辑     准备及对象canvas创建12345var canvas = document.createElement(&apos;canvas&apos;);var ctx = ca">
@@ -394,9 +394,11 @@
 <li>reset：重置monster对象</li>
 <li>update：根据用户事件来更新位置，参数modifier保证物体运动匀速。</li>
 <li>render：根据hero和monster对象渲染</li>
-<li>main：main循环进行，调用update.render函数<h4 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h4></li>
+<li>main：main循环进行，调用update.render函数</li>
 </ul>
 </li>
+</ul>
+<h4 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h4><ul>
 <li>用来处理每次新生的怪物的位置</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reset = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    monster.x = <span class="number">32</span> + (<span class="built_in">Math</span>.random() * (canvas.width - <span class="number">64</span>));</div><div class="line">    monster.y = <span class="number">32</span> + (<span class="built_in">Math</span>.random() * (canvas.height - <span class="number">64</span>));</div><div class="line">&#125;;</div></pre></td></tr></table></figure>

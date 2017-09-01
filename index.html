@@ -400,9 +400,11 @@
 <li>reset：重置monster对象</li>
 <li>update：根据用户事件来更新位置，参数modifier保证物体运动匀速。</li>
 <li>render：根据hero和monster对象渲染</li>
-<li>main：main循环进行，调用update.render函数<h4 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h4></li>
+<li>main：main循环进行，调用update.render函数</li>
 </ul>
 </li>
+</ul>
+<h4 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h4><ul>
 <li>用来处理每次新生的怪物的位置</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reset = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    monster.x = <span class="number">32</span> + (<span class="built_in">Math</span>.random() * (canvas.width - <span class="number">64</span>));</div><div class="line">    monster.y = <span class="number">32</span> + (<span class="built_in">Math</span>.random() * (canvas.height - <span class="number">64</span>));</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
