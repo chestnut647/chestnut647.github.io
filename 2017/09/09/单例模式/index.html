@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="问题描述 计算下列排列组合公式，并返回组合而成的序列 1c_m^n  如[2, 3, 4]以基数2排列，则返回 1[ [2, 3], [2, 4], [3, 4] ]   解决思路 这是比较典型的大问题可以化解为小问题。可以采取递归的方式来解决。 首先，建立一个数组allResult用以存放结果 建立一个即时运行的的递归函数 arr 待排列的数列 size 组合运算的基数 ==result== 是">
+<meta name="description" content="单例模式： 又称为单体模式，是只允许实例化一次的对象类功能: 可以用一个对象来规划一个命名空间，区分模块，构造静态变量 命名空间(namespace) 不同人定义的函数可能会重名，可以采取划分命名空间的方式，把函数放在命名空间内，就不会相互影响，比如说jquery库就提供了JQury这样的命名空间 下面这个例子中，chestnut就是一个命名空间  12345678910var chestnut">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排列组合">
-<meta property="og:url" content="http://yoursite.com/2017/08/22/排列组合/index.html">
+<meta property="og:title" content="单例模式">
+<meta property="og:url" content="http://yoursite.com/2017/09/09/单例模式/index.html">
 <meta property="og:site_name" content="刘小窝">
-<meta property="og:description" content="问题描述 计算下列排列组合公式，并返回组合而成的序列 1c_m^n  如[2, 3, 4]以基数2排列，则返回 1[ [2, 3], [2, 4], [3, 4] ]   解决思路 这是比较典型的大问题可以化解为小问题。可以采取递归的方式来解决。 首先，建立一个数组allResult用以存放结果 建立一个即时运行的的递归函数 arr 待排列的数列 size 组合运算的基数 ==result== 是">
-<meta property="og:updated_time" content="2017-08-22T07:58:09.779Z">
+<meta property="og:description" content="单例模式： 又称为单体模式，是只允许实例化一次的对象类功能: 可以用一个对象来规划一个命名空间，区分模块，构造静态变量 命名空间(namespace) 不同人定义的函数可能会重名，可以采取划分命名空间的方式，把函数放在命名空间内，就不会相互影响，比如说jquery库就提供了JQury这样的命名空间 下面这个例子中，chestnut就是一个命名空间  12345678910var chestnut">
+<meta property="og:updated_time" content="2017-09-09T02:19:21.397Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="排列组合">
-<meta name="twitter:description" content="问题描述 计算下列排列组合公式，并返回组合而成的序列 1c_m^n  如[2, 3, 4]以基数2排列，则返回 1[ [2, 3], [2, 4], [3, 4] ]   解决思路 这是比较典型的大问题可以化解为小问题。可以采取递归的方式来解决。 首先，建立一个数组allResult用以存放结果 建立一个即时运行的的递归函数 arr 待排列的数列 size 组合运算的基数 ==result== 是">
+<meta name="twitter:title" content="单例模式">
+<meta name="twitter:description" content="单例模式： 又称为单体模式，是只允许实例化一次的对象类功能: 可以用一个对象来规划一个命名空间，区分模块，构造静态变量 命名空间(namespace) 不同人定义的函数可能会重名，可以采取划分命名空间的方式，把函数放在命名空间内，就不会相互影响，比如说jquery库就提供了JQury这样的命名空间 下面这个例子中，chestnut就是一个命名空间  12345678910var chestnut">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/22/排列组合/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/09/单例模式/"/>
 
 
 
 
 
-  <title> 排列组合 | 刘小窝 </title>
+  <title> 单例模式 | 刘小窝 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +259,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/排列组合/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/09/单例模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chestnut_647">
@@ -280,7 +280,7 @@
             
             
               
-                排列组合
+                单例模式
               
             
           </h1>
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-22T15:53:22+08:00">
-                2017-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T10:18:03+08:00">
+                2017-09-09
               </time>
             
 
@@ -318,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -336,9 +336,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/22/排列组合/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/09/单例模式/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/22/排列组合/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/09/单例模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -364,43 +364,28 @@
       
 
       
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
-<li><p>计算下列排列组合公式，并返回组合而成的序列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c_m^n</div></pre></td></tr></table></figure>
-</li>
-<li><p>如[2, 3, 4]以基数2排列，则返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[ [2, 3], [2, 4], [3, 4] ]</div></pre></td></tr></table></figure>
-</li>
+        <p>单例模式： 又称为单体模式，是只允许实例化一次的对象类<br>功能: 可以用一个对象来规划一个命名空间，区分模块，构造静态变量</p>
+<h3 id="命名空间-namespace"><a href="#命名空间-namespace" class="headerlink" title="命名空间(namespace)"></a>命名空间(namespace)</h3><ul>
+<li>不同人定义的函数可能会重名，可以采取划分命名空间的方式，把函数放在命名空间内，就不会相互影响，比如说jquery库就提供了JQury这样的命名空间</li>
+<li>下面这个例子中，chestnut就是一个命名空间</li>
 </ul>
-<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><ul>
-<li>这是比较典型的大问题可以化解为小问题。可以采取递归的方式来解决。</li>
-<li>首先，建立一个数组allResult用以存放结果</li>
-<li>建立一个即时运行的的递归函数<ul>
-<li>arr 待排列的数列</li>
-<li>size 组合运算的基数</li>
-<li>==result== 是保存当前组合序列的前一部分</li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> chestnut = &#123;</div><div class="line">    <span class="attr">g</span>: <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">css</span>: <span class="function"><span class="keyword">function</span>(<span class="params">id, key, val</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.g(id).setAttribute(key, val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">chestnut.css(<span class="string">'box'</span>, <span class="string">'width'</span>, <span class="string">'100px'</span>);</div></pre></td></tr></table></figure>
+<h3 id="模块分明"><a href="#模块分明" class="headerlink" title="模块分明"></a>模块分明</h3><ul>
+<li>用单例模式可以管理代码库中的各个模块</li>
+<li>先设置整个命名空间，chestnut</li>
+<li>操作DOM的就放在dom模块中， 有关事件的就放在event模块中</li>
 </ul>
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chestnut.dom.addClass</div><div class="line">chestnut.dom.append</div><div class="line">chestnut.event.stopPropagation</div><div class="line">...</div></pre></td></tr></table></figure>
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><ul>
+<li>javascript本身是没有静态变量这个概念的，理论上所有的变量都是可以更改的</li>
+<li>但是利用单例模式（还有闭包+立即执行函数）,可以构造出静态变量，外界无法访问修改。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(funciton f(arr, size, result) &#123;</div><div class="line">    </div><div class="line">&#125;)(arr,size, []);</div></pre></td></tr></table></figure>
-<ul>
-<li>在递归函数内部首先要对数组长度与基数进行比较<ul>
-<li>当数组长度比基数小时，直接返回。</li>
-<li>当数组长度与基数相等时，说明其中一个序列获取完成，添加进allResult</li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Conf = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> conf = &#123;</div><div class="line">       <span class="attr">name</span>: <span class="string">'chestnut'</span>,</div><div class="line">       <span class="attr">age</span>: <span class="number">24</span></div><div class="line">   &#125;;</div><div class="line">   <span class="keyword">return</span> &#123;</div><div class="line">       <span class="attr">getName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> conf.name;</div><div class="line">       &#125;,</div><div class="line">       <span class="attr">getAge</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> conf.age;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<h3 id="只会实例化一个的对象"><a href="#只会实例化一个的对象" class="headerlink" title="只会实例化一个的对象"></a>只会实例化一个的对象</h3><ul>
+<li>上面几种功能采用的都是立即生成的单例对象，直接生成对象，有时候需要延迟创建</li>
+<li>跟创建静态变量相比，惰性单例，多了一步来验证对象是否已经创建过，若创建过，则直接返回。</li>
 </ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> arrLen = arr.length;</div><div class="line"><span class="keyword">if</span>(arrLen &lt; size) <span class="keyword">return</span>;</div><div class="line"><span class="keyword">if</span>(arrLen === size) &#123;</div><div class="line">      allResult.push([].concat(result, arr));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>当数组长度比基数大时<ul>
-<li>先拿到传递过来的序列的前部分，将原始序列的当前值添加至newResult</li>
-<li>当size=1时，说明序列完成，向allResult添加即可</li>
-<li>size!=1，则需要进行递归，递归部分是函数最主要的部分</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arrLen; i++) &#123;</div><div class="line">    <span class="keyword">let</span> newResult = [].concat(result);</div><div class="line">    newResult.push(arr[i]);</div><div class="line">    <span class="keyword">if</span>(size === <span class="number">1</span>) &#123;</div><div class="line">         allResult.push(newResult);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">         <span class="keyword">let</span> newArr = [].concat(arr);</div><div class="line">         newArr.splice(<span class="number">0</span>, i+<span class="number">1</span>);</div><div class="line">         f(newArr, size<span class="number">-1</span>, newResult);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** </span></div><div class="line"> * combine：进行排列组合运算</div><div class="line"> * @param (Array) arr [待排列数列]</div><div class="line"> * @param (number) size [组合运算的基数]</div><div class="line"> * @return (Array) allResult [包含数组的数组，里面每个数组为一个序列]</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">combine</span>(<span class="params">arr, size</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> allResult = [];</div><div class="line">  (<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">arr, size, result</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> arrLen = arr.length;</div><div class="line">    <span class="keyword">if</span>(arrLen &lt; size) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">if</span>(arrLen === size) &#123;</div><div class="line">      allResult.push([].concat(result, arr));</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arrLen; i++) &#123;</div><div class="line">        <span class="keyword">let</span> newResult = [].concat(result);</div><div class="line">        newResult.push(arr[i]);</div><div class="line">        <span class="keyword">if</span>(size === <span class="number">1</span>) &#123;</div><div class="line">          allResult.push(newResult);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="keyword">let</span> newArr = [].concat(arr);</div><div class="line">          newArr.splice(<span class="number">0</span>, i+<span class="number">1</span>);</div><div class="line">          f(newArr, size<span class="number">-1</span>, newResult);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;)(arr, size, []);</div><div class="line">  <span class="keyword">return</span> allResult;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lazySingle = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> _instance = <span class="literal">null</span>;</div><div class="line">    <span class="comment">//这一部分只会创建一次</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Single</span> = <span class="title">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">publicMethod</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</div><div class="line">            <span class="attr">publicProperty</span>: <span class="string">'1.0'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//保证只创建了一次</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(!_instance) &#123;</div><div class="line">            _instance = Single();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> _instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -437,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/21/es6中的类class/" rel="next" title="es6中的类class">
-                <i class="fa fa-chevron-left"></i> es6中的类class
+              <a href="/2017/09/01/抓怪物小游戏/" rel="next" title="抓怪物小游戏">
+                <i class="fa fa-chevron-left"></i> 抓怪物小游戏
               </a>
             
           </div>
@@ -446,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/23/深度拷贝/" rel="prev" title="深度拷贝">
-                深度拷贝 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决思路"><span class="nav-number">2.</span> <span class="nav-text">解决思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#完整代码"><span class="nav-number">2.1.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#命名空间-namespace"><span class="nav-number">1.</span> <span class="nav-text">命名空间(namespace)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块分明"><span class="nav-number">2.</span> <span class="nav-text">模块分明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态变量"><span class="nav-number">3.</span> <span class="nav-text">静态变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#只会实例化一个的对象"><span class="nav-number">4.</span> <span class="nav-text">只会实例化一个的对象</span></a></li></ol></div>
             
 
           </div>
@@ -724,9 +705,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/08/22/排列组合/';
-          this.page.identifier = '2017/08/22/排列组合/';
-          this.page.title = '排列组合';
+          this.page.url = 'http://yoursite.com/2017/09/09/单例模式/';
+          this.page.identifier = '2017/09/09/单例模式/';
+          this.page.title = '单例模式';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://chestnut647-github-io.disqus.com/embed.js';

@@ -260,6 +260,181 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/09/单例模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chestnut_647">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/09/单例模式/" itemprop="url">
+                  单例模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T10:18:03+08:00">
+                2017-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/09/单例模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/09/单例模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>单例模式： 又称为单体模式，是只允许实例化一次的对象类<br>功能: 可以用一个对象来规划一个命名空间，区分模块，构造静态变量</p>
+<h3 id="命名空间-namespace"><a href="#命名空间-namespace" class="headerlink" title="命名空间(namespace)"></a>命名空间(namespace)</h3><ul>
+<li>不同人定义的函数可能会重名，可以采取划分命名空间的方式，把函数放在命名空间内，就不会相互影响，比如说jquery库就提供了JQury这样的命名空间</li>
+<li>下面这个例子中，chestnut就是一个命名空间</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> chestnut = &#123;</div><div class="line">    <span class="attr">g</span>: <span class="function"><span class="keyword">function</span>(<span class="params">id</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">css</span>: <span class="function"><span class="keyword">function</span>(<span class="params">id, key, val</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.g(id).setAttribute(key, val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">chestnut.css(<span class="string">'box'</span>, <span class="string">'width'</span>, <span class="string">'100px'</span>);</div></pre></td></tr></table></figure>
+<h3 id="模块分明"><a href="#模块分明" class="headerlink" title="模块分明"></a>模块分明</h3><ul>
+<li>用单例模式可以管理代码库中的各个模块</li>
+<li>先设置整个命名空间，chestnut</li>
+<li>操作DOM的就放在dom模块中， 有关事件的就放在event模块中</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chestnut.dom.addClass</div><div class="line">chestnut.dom.append</div><div class="line">chestnut.event.stopPropagation</div><div class="line">...</div></pre></td></tr></table></figure>
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><ul>
+<li>javascript本身是没有静态变量这个概念的，理论上所有的变量都是可以更改的</li>
+<li>但是利用单例模式（还有闭包+立即执行函数）,可以构造出静态变量，外界无法访问修改。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Conf = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> conf = &#123;</div><div class="line">       <span class="attr">name</span>: <span class="string">'chestnut'</span>,</div><div class="line">       <span class="attr">age</span>: <span class="number">24</span></div><div class="line">   &#125;;</div><div class="line">   <span class="keyword">return</span> &#123;</div><div class="line">       <span class="attr">getName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> conf.name;</div><div class="line">       &#125;,</div><div class="line">       <span class="attr">getAge</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> conf.age;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<h3 id="只会实例化一个的对象"><a href="#只会实例化一个的对象" class="headerlink" title="只会实例化一个的对象"></a>只会实例化一个的对象</h3><ul>
+<li>上面几种功能采用的都是立即生成的单例对象，直接生成对象，有时候需要延迟创建</li>
+<li>跟创建静态变量相比，惰性单例，多了一步来验证对象是否已经创建过，若创建过，则直接返回。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lazySingle = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> _instance = <span class="literal">null</span>;</div><div class="line">    <span class="comment">//这一部分只会创建一次</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Single</span> = <span class="title">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">publicMethod</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</div><div class="line">            <span class="attr">publicProperty</span>: <span class="string">'1.0'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//保证只创建了一次</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(!_instance) &#123;</div><div class="line">            _instance = Single();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> _instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/01/抓怪物小游戏/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1998,158 +2173,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/25/This-is-my-first-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chestnut_647">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘小窝">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/25/This-is-my-first-blog/" itemprop="url">
-                  This is my first blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T14:24:14+08:00">
-                2017-05-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/05/25/This-is-my-first-blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/25/This-is-my-first-blog/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
-<li>HTML<ul>
-<li>HTML5</li>
-</ul>
-</li>
-<li>CSS<ul>
-<li>CSS3</li>
-<li>常用布局</li>
-</ul>
-</li>
-<li>JS<ul>
-<li>ES6</li>
-<li>框架<ul>
-<li>JQuery</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>nodejs</li>
-<li>Vue </li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2199,7 +2222,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2210,7 +2233,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
